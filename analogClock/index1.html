@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Clock</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div class="clock">
+        <div class="numbers">
+            <div class="twelve">12</div>
+            <div class="three">3</div>
+            <div class="six">6</div>
+            <div class="nine">9</div>
+        </div>
+        <div class="arrows">
+            <div class="hour"></div>
+            <div class="minute"></div>
+            <div class="second"></div>
+        </div>
+        <img src="rolexLogo.png" alt="rolex">
+    </div>
+
+    <script>
+        const hourEl = document.querySelector(".hour");
+        const minuteEl = document.querySelector(".minute");
+        const secondEl = document.querySelector(".second");
+
+        function updateClock(){
+            const currentTime = new Date();
+            const currentH = currentTime.getHours();
+            const currentM = currentTime.getMinutes();
+            const currentS = currentTime.getSeconds();
+
+            const hourDeg = currentH * 360 / 12;
+            const minuteDeg = currentM * 360 / 60;
+            const secondDeg = currentS * 360 / 60;
+
+            hourEl.style.transform = `rotate(${hourDeg}deg)`;
+            minuteEl.style.transform = `rotate(${minuteDeg}deg)`;
+            secondEl.style.transform = `rotate(${secondDeg}deg)`;
+
+            setTimeout(updateClock, 1000);
+        }
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
